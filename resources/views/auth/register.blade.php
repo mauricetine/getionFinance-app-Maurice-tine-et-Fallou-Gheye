@@ -29,11 +29,20 @@
 
         <div>
             <x-input-label for="type_compte" :value="__('type_compte')" />
-            <x-text-select id="type_compte" class="block mt-1 w-full" type="text" name="type_compte" :value="old('type_compte')" required autofocus autocomplete="type_compte" >
-            <option value="standard">courant</option>
-            <option value="premium">epargne</option>
-            </x-text-select>
+            <select id="type_compte" class="block mt-1 w-full"  name="type_compte" :value="old('type_compte')" required autofocus autocomplete="type_compte" >
+            <option value="courant">courant</option>
+            <option value="epargne">epargne</option>
+            </select>
             <x-input-error :messages="$errors->get('type_compte')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="pack" :value="__('pack')" />
+            <select id="pack" class="block mt-1 w-full"  name="pack" :value="old('pack')" required autofocus autocomplete="pack" >
+                <option value="standard">Pack Standard</option>
+                <option value="premium">Pack Premium</option>
+                <option value="gold">Pack Gold</option>
+            </select>
+            <x-input-error :messages="$errors->get('pack')" class="mt-2" />
         </div>
 
 

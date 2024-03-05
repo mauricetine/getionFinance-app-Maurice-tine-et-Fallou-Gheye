@@ -21,7 +21,7 @@ class User extends Authenticatable
         'rib' , 
         'name',
         'email',
-        'cin',
+        'cni',
         'telephone',
         'type_compte',
         'solde',
