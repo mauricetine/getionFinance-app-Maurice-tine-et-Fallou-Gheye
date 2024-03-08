@@ -22,6 +22,33 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        
+        
+        <div>
+            <x-input-label for="telephone" :value="__('telephone')" />
+            <x-text-input id="telephone" name="telephone" type="text" class="mt-1 block w-full" :value="old('telephone', $user->telephone)" required autofocus autocomplete="telephone" />
+            <x-input-error class="mt-2" :messages="$errors->get('telephone')" />
+        </div>
+        
+        <div>
+            <x-input-label for="type_compte" :value="__('type_compte')" />
+            <select id="type_compte" name="type_compte" type="text"  class="mt-1 block w-full" :value="old('type_compte', $user->type_compte)" required autofocus autocomplete="type_compte" >
+                <option value="">{{__(old('type_compte', $user->type_compte))}}</option>
+                <option value="epargne">epargne</option>
+                <option value="courant">courant</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('pack')" />
+        </div>
+        <div>
+            <x-input-label for="pack" :value="__('pack')" />
+            <select id="pack" name="pack" type="text"  class="mt-1 block w-full" :value="old('pack', $user->pack)" required autofocus autocomplete="pack" >
+                <option value="">Pack  {{__(old('pack', $user->pack))}}</option>
+                <option value="standard">Pack Standard</option>
+                <option value="premium">Pack Premium</option>
+                <option value="gold">Pack Gold</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('pack')" />
+        </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
