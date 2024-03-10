@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -66,5 +67,21 @@ class User extends Authenticatable
     public function cartes()
     {
         return $this->hasMany(Carte::class, 'user_id', 'id');
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+    public function generateRib()
+    {
+        $banque = '12345';
+        $guichet = '67890';
+        $compte = mt_rand(1000000000, 9999999999);
+        $cleRib = mt_rand(01,99);
+
+        $rib ="BANQUE : {$banque}; GUICHET : {$guichet}; COMPTE : {$compte} ;CLÉ RIB : {$cleRib}";
+
+        $this->rib = $rib;
+        $this->save();
     }
 }

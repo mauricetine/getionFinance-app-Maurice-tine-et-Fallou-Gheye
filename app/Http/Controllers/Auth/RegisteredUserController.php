@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
         //Mail::to($user->email)->send(new NewAccountMail($user));
 
         event(new Registered($user));
+        $user->generateRib();
 
         Auth::login($user);
 

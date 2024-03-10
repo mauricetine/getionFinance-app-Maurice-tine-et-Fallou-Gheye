@@ -13,7 +13,7 @@ class NewAccountMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $user;
+    public $user;
 
     /**
      * Create a new message instance.
@@ -28,33 +28,36 @@ class NewAccountMail extends Mailable
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'New Account Mail',
-        );
-    }
+    // public function envelope(): Envelope
+    // {
+    //     return new Envelope(
+    //         subject: 'New Account Mail',
+    //     );
+    // }
 
     /**
      * Get the message content definition.
      */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.new_account',
-            with: [
-                'user' => $this->user,
-            ],
-        );
-    }
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'emails.new_account',
+    //         with: [
+    //             'user' => $this->user,
+    //         ],
+    //     );
+    // }
 
     /**
      * Get the attachments for the message.
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments(): array
-    {
-        return [];
+    // public function attachments(): array
+    // {
+    //     return [];
+    // }
+    public function build(){
+        return $this->view('emails.new_account');
     }
 }

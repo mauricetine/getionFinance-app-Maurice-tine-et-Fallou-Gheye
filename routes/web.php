@@ -24,12 +24,17 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+// Route::get('/home', [HomeController::class, 'profil'])->middleware('auth')->name('profil');
 Route::get('post',[HomeController::class,'post'])->middleware(['auth','admin']);
 Route::get('guichet/guichetpage',[HomeController::class,'guichetpage'])->middleware(['auth','guichet'])->name('guichetpage');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    Route::get('/envoyer-argent',[HomeController::class, 'showEnvoyerArgentForm'])->name('envoyer_argent');
+    Route::post('/envoyer-argent', [HomeController::class, 'envoyerArgent']);
+    Route::get('/transactions', [HomeController::class, 'showTransactions'])->name('transactions');
 });
 
 require __DIR__.'/auth.php';

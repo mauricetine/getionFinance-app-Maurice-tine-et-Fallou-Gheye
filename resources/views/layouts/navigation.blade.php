@@ -19,6 +19,17 @@
                         {{ __('Acceuil') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->usertype === 'user')
+                <x-nav-link  :href="route('transactions')" :active="request()->routeIs('transactions')">
+                    {{ __('Transactions') }}
+                </x-nav-link>
+
+                @if(Auth::user()->type_compte !== 'epargne')
+                <x-nav-link  :href="route('envoyer_argent')" :active="request()->routeIs('envoyer_argent')">
+                    {{ __('Envoyer de l\'argent') }}
+                </x-nav-link>
+                @endif
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -45,8 +56,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -91,8 +101,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
