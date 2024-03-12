@@ -19,17 +19,39 @@
                         {{ __('Acceuil') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->usertype === 'admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('post')" :active="request()->routeIs('post')">
+                        {{ __('utlilisateurs') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                @if(Auth::user()->usertype === 'guichet')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('depot')" :active="request()->routeIs('depot')">
+                        {{ __('depot') }}
+                    </x-nav-link>
+                </div>
+                @endif
                 @if(Auth::user()->usertype === 'user')
-                <x-nav-link  :href="route('transactions')" :active="request()->routeIs('transactions')">
-                    {{ __('Transactions') }}
-                </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('transactions')" :active="request()->routeIs('transactions')">
+                        {{ __('Transactions') }}
+                    </x-nav-link>
+                </div>
+                
 
                 @if(Auth::user()->type_compte !== 'epargne')
-                <x-nav-link  :href="route('envoyer_argent')" :active="request()->routeIs('envoyer_argent')">
-                    {{ __('Envoyer de l\'argent') }}
-                </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('envoyer_argent')" :active="request()->routeIs('envoyer_argent')">
+                        {{ __('Envoyer de l\'argent') }}
+                    </x-nav-link>
+                </div>
                 @endif
                 @endif
+
+
+
             </div>
 
             <!-- Settings Dropdown -->
