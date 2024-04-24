@@ -97,6 +97,7 @@ public function depot(User $guichet, User $beneficiaire, $montant)
 
     
     $beneficiaire->save();
+    $guichet->save();
 
     $this->emetteur_id = $guichet->id;
     $this->beneficiaire_id = $beneficiaire->id;

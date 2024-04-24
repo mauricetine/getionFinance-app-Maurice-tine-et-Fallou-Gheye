@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h3>Envoyer de l'argent</h3>
+                    <h3>faire un depot</h3>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -15,7 +15,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('depot') }}" method="post">
+                    <form action="{{ route('envoyer_argent') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="beneficiaire">Choisir le bénéficiaire :</label>

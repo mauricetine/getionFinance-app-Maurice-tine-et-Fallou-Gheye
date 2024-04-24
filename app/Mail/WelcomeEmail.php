@@ -30,7 +30,7 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.compte_bloquer')
-                    ->subject('compte bloquer');
+        return $this->view('emails.new_account')
+                    ->subject('Welcome to Our Website');
     }
 }

@@ -40,6 +40,6 @@ class DepotArgentController extends Controller
     {
         $users = User::all(); // Récupère tous les utilisateurs
 
-        return view('envoyer-argent', compact('users'));
+        return view('guichet/guichetpage', compact('users'));
     }
 }

@@ -8,14 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Carte;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewAccountMail;
 class HomeController extends Controller
 {
     public function index()
     {
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
-
+            $etat = Auth()->user()->etat;
+            if ($etat ==0) {
+                Auth::logout();
+                return redirect()->route('login')->withErrors(['account_disabled' => 'Votre compte a été désactivé.']);
+                //Mail::to($user->email)->send(new NewAccountMail());
+            }
             if ($usertype == 'user') {
                 $user = Auth::user(); // Récupère l'utilisateur connecté
                 //$carte=Auth()->user()->carte;

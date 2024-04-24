@@ -12,11 +12,13 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\WelcomeNotification;
-use App\Mail\NewAccountMail;
+
+use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\NewAccountMail;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -60,6 +62,8 @@ class RegisteredUserController extends Controller
         // Envoyer la notification de bienvenue
         //$user->notify(new WelcomeNotification());
         //Mail::to($user->email)->send(new NewAccountMail($user));
+        //Mail::to($user->email)->send(new NewAccountMail());
+        Mail::to($user->email)->send(new WelcomeEmail());
         function generateRandomCardNumber(): string
         {
             $blocks = [];
